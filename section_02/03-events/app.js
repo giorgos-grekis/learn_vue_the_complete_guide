@@ -6,12 +6,16 @@ const app = Vue.createApp({
   },
 
   methods: {
-    add() {
-      this.counter++;
+    add(num) {
+      this.counter = this.counter + num;
     },
-    reduce() {
-      if (this.counter <= 0) return;
-      this.counter--;
+    reduce(num) {
+      console.log("reduce num", num, typeof num);
+      if (this.counter <= num) {
+        this.counter = 0;
+        return;
+      }
+      this.counter = this.counter - num;
     },
   },
 });
