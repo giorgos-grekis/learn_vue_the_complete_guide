@@ -1,13 +1,30 @@
-const buttonEL = document.querySelector("button");
-const inputEl = document.querySelector("input");
-const listEl = document.querySelector("ul");
+/*** Just JavaScript ***/
+// const buttonEL = document.querySelector("button");
+// const inputEl = document.querySelector("input");
+// const listEl = document.querySelector("ul");
 
-function addGoal() {
-  const enteredValue = inputEl.value;
-  const listItemEl = document.createElement("li");
-  listItemEl.textContent = enteredValue;
-  listEl.appendChild(listItemEl);
-  inputEl.value = "";
-}
+// function addGoal() {
+//   const enteredValue = inputEl.value;
+//   const listItemEl = document.createElement("li");
+//   listItemEl.textContent = enteredValue;
+//   listEl.appendChild(listItemEl);
+//   inputEl.value = "";
+// }
 
-buttonEL.addEventListener("click", addGoal);
+// buttonEL.addEventListener("click", addGoal);
+
+/*** With Vue ***/
+Vue.createApp({
+  data() {
+    return {
+      goals: [],
+      enteredValue: "",
+    };
+  },
+
+  methods: {
+    addGoal() {
+      this.goals.push(this.enteredValue);
+    },
+  },
+}).mount("#app");
