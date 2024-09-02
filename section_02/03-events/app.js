@@ -3,14 +3,42 @@ const app = Vue.createApp({
     return {
       counter: 0,
       name: "",
+      lastName: "",
       confirmedName: "",
+      // fullname: "",
     };
+  },
+
+  watch: {
+    counter(value) {
+      if (value > 50) {
+        setTimeout(() => {
+          this.counter = 0;
+        }, 5000);
+      }
+    },
+
+    // // whenever the name changes, the wacther will be execute
+    // name(value) {
+    //   if (value === "") {
+    //     this.fullname = "";
+    //     return;
+    //   }
+    //   this.fullname = value + " " + this.lastName;
+    // },
+    // lastName(value) {
+    //   if (value === "") {
+    //     this.fullname = "";
+    //     return;
+    //   }
+    //   this.fullname = this.name + " " + value;
+    // },
   },
 
   computed: {
     fullname() {
-      if (this.name === "") return "";
-      return this.name + " " + "lastName";
+      if (this.name === "" && this.lastName === "") return "";
+      return this.name + " " + this.lastName;
     },
   },
 
