@@ -20,13 +20,17 @@
     <section id="styling">
       <!-- :style="{borderColor: boxASelected ? 'red': '#ccc'}" -->
       <!-- :class="boxASelected ? 'demo active': 'demo'" -->
+      <div class="demo" :class="boxAClasses" @click="boxSelected('A')"></div>
       <div
         class="demo"
-        :class="{active: boxASelected}"
-        @click="boxSelected('A')"
+        :class="{active: boxBSelected}"
+        @click="boxSelected('B')"
       ></div>
-      <div class="demo" @click="boxSelected('B')"></div>
-      <div class="demo" @click="boxSelected('C')"></div>
+      <div
+        class="demo"
+        :class="{active: boxCSelected}"
+        @click="boxSelected('C')"
+      ></div>
     </section>
   </body>
 </html>
