@@ -1,6 +1,37 @@
+// class WinnerClass {
+//   // Private Fields
+//   static #_DRAW = "draw";
+//   static #_MONSTER = "monster";
+//   static #_PLAYER = "player";
+
+//   // Accessors for "get" functions only (no "set" functions)
+//   static get DRAW() {
+//     return this.#_DRAW;
+//   }
+
+//   static get MONSTER() {
+//     return this.#_MONSTER;
+//   }
+
+//   static get PLAYER() {
+//     return this.#_PLAYER;
+//   }
+// }
+
 const getRandomValue = (min, max) =>
   Math.floor(Math.random() * (max - min + 1) + min);
 // Math.floor(Math.random() * (min - max)) + min;
+
+/**
+ * Enum for winner
+ * @readonly
+ * @enum string
+ */
+const Winner = Object.freeze({
+  DRAW: "draw",
+  MONSTER: "monster",
+  PLAYER: "player",
+});
 
 const app = Vue.createApp({
   data() {
@@ -8,6 +39,7 @@ const app = Vue.createApp({
       playerHealth: 100,
       monsterHealth: 100,
       currentRound: 0,
+      winner: null,
     };
   },
 
@@ -20,6 +52,29 @@ const app = Vue.createApp({
     },
     mayUseSpecialAttack() {
       return this.currentRound % 3 !== 0;
+    },
+  },
+
+  watch: {
+    playerHealth(value) {
+      if (value <= 0 && this.monsterHealth <= 0) {
+        // draw
+        this.winner = Winner.DRAW;
+      }
+      if (value <= 0) {
+        //Player lost
+        this.winner = Winner.MONSTER;
+      }
+    },
+    monsterHealth(value) {
+      if (value <= 0 && this.playerHealth <= 0) {
+        // draw
+        this.winner = Winner.DRAW;
+      }
+      if (value <= 0) {
+        // Monster lost
+        this.winner = Winner.PLAYER;
+      }
     },
   },
 
@@ -48,6 +103,7 @@ const app = Vue.createApp({
       const healValue = getRandomValue(8, 20);
       if (this.playerHealth + healValue > 100) {
         this.playerHealth = 100;
+        this.attackPlayer();
         return;
       }
       this.playerHealth += healValue;
