@@ -1,47 +1,98 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<!-- <script setup lang="ts">
+import FriendContact from './components/FriendContact.vue'
+</script> -->
+
+<script lang="ts">
+export default {
+  data() {
+    return {
+      friends: [
+        { id: 'cisu', name: 'Cisu Moeg', phone: '6949999999', email: 'cis2@moeg.com' },
+        { id: 'doe', name: 'John Doe', phone: '6979999999', email: 'john@mdoe.com' }
+      ]
+    }
+  }
+}
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
+    <h1>My Friensd</h1>
   </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <section>
+    <ul>
+      <li v-for="friend in friends" :key="friend.id">
+        <!-- <FriendContact /> -->
+        <friend-contact></friend-contact>
+      </li>
+    </ul>
+  </section>
 </template>
 
-<style scoped>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Jost', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
 header {
-  line-height: 1.5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  margin: 3rem auto;
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: #58004d;
+  color: white;
+  text-align: center;
+  width: 90%;
+  max-width: 40rem;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+#app ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+#app li {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  margin: 1rem auto;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  width: 90%;
+  max-width: 40rem;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+#app h2 {
+  font-size: 2rem;
+  border-bottom: 4px solid #ccc;
+  color: #58004d;
+  margin: 0 0 1rem 0;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+#app button {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid #ff0077;
+  background-color: #ff0077;
+  color: white;
+  padding: 0.05rem 1rem;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.26);
+}
+
+#app button:hover,
+#app button:active {
+  background-color: #ec3169;
+  border-color: #ec3169;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
 }
 </style>
