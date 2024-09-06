@@ -27,6 +27,18 @@ export default {
       // }
     }
   },
+
+  emits: ['toggle-favorite'],
+  // emits: {
+  //   'toggle-favorite': function (id) {
+  //     if (!id) {
+  //       console.warn('Id is missing!')
+  //       return false
+  //     }
+  //     return true
+  //   }
+  // },
+
   data() {
     return {
       detailsAreVisible: false
