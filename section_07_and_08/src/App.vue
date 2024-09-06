@@ -31,6 +31,18 @@ export default {
       const identifiedFriend = this.friends.find((friend) => friend.id === friendId)
 
       identifiedFriend.isFavorite = !identifiedFriend.isFavorite
+    },
+
+    addContact(name, phone, email) {
+      const newFriendContact = {
+        id: new Date().toISOString(),
+        name,
+        phone,
+        email,
+        isFavorite: false
+      }
+
+      this.friends.push(newFriendContact)
     }
   }
 }
@@ -40,6 +52,9 @@ export default {
   <header>
     <h1>My Friensd</h1>
   </header>
+
+  <new-friend @add-contact="addContact"></new-friend>
+
   <section>
     <!-- <FriendContact /> -->
     <ul>
@@ -90,7 +105,8 @@ header {
   list-style: none;
 }
 
-#app li {
+#app li,
+form {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 1rem auto;
   border-radius: 10px;
