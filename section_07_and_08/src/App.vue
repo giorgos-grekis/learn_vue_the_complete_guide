@@ -20,10 +20,19 @@ export default {
     <h1>My Friensd</h1>
   </header>
   <section>
-    <ul>
+    <!-- <FriendContact /> -->
+    <!-- <ul>
       <li v-for="friend in friends" :key="friend.id">
-        <!-- <FriendContact /> -->
-        <friend-contact></friend-contact>
+        <friend-contact friend></friend-contact>
+      </li>
+    </ul> -->
+    <ul>
+      <li>
+        <friend-contact
+          name="Cisu Moeg"
+          phone-number="6949999999"
+          email-address="cis2@moeg.com"
+        ></friend-contact>
       </li>
     </ul>
   </section>

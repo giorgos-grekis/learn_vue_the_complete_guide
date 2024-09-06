@@ -1,5 +1,6 @@
 <script>
 export default {
+  props: ['name', 'phoneNumber', 'emailAddress'],
   data() {
     return {
       detailsAreVisible: true,
@@ -17,11 +18,11 @@ export default {
 
 <template>
   <li>
-    <h2>{{ friend.name }}</h2>
+    <h2>{{ name }}</h2>
     <button @click="toogleDetails">{{ detailsAreVisible ? 'Hide' : 'Show' }} Details</button>
     <ul v-if="detailsAreVisible">
-      <li><strong>Phone: </strong>{{ friend.phone }}</li>
-      <li><strong>Email: </strong>{{ friend.email }}</li>
+      <li><strong>Phone: </strong>{{ phoneNumber }}</li>
+      <li><strong>Email: </strong>{{ emailAddress }}</li>
     </ul>
   </li>
 </template>
