@@ -15,18 +15,17 @@ export default {
       required: true
     },
     isFavorite: {
-      type: String,
+      type: Boolean,
       required: false,
-      default: '0', // can be a function
-      validator: function (value) {
-        return value === '1' || value === '0'
-      }
+      default: false // can be a function
+      // validator: function (value) {
+      //   return value === '1' || value === '0'
+      // }
     }
   },
   data() {
     return {
       detailsAreVisible: true,
-      friend: { id: 'cisu', name: 'Cisu Moeg', phone: '6949999999', email: 'cis2@moeg.com' },
       friendIsFavorite: this.isFavorite
     }
   },
@@ -37,11 +36,7 @@ export default {
     },
 
     toogleFavorite() {
-      if (this.friendIsFavorite === '1') {
-        this.friendIsFavorite = '0'
-      } else {
-        this.friendIsFavorite = '1'
-      }
+      this.friendIsFavorite = !this.friendIsFavorite
     }
   }
 }
@@ -49,7 +44,7 @@ export default {
 
 <template>
   <li>
-    <h2>{{ name }} {{ friendIsFavorite === '1' ? '(Favorite)' : '' }}</h2>
+    <h2>{{ name }} {{ friendIsFavorite ? '(Favorite)' : '' }}</h2>
     <button @click="toogleFavorite">toggle Favorite</button>
     <button @click="toogleDetails">{{ detailsAreVisible ? 'Hide' : 'Show' }} Details</button>
     <ul v-if="detailsAreVisible">

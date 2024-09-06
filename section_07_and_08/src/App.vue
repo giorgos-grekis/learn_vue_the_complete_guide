@@ -21,28 +21,21 @@ export default {
   </header>
   <section>
     <!-- <FriendContact /> -->
-    <!-- <ul>
-      <li v-for="friend in friends" :key="friend.id">
-        <friend-contact friend></friend-contact>
-      </li>
-    </ul> -->
     <ul>
-      <li>
-        <friend-contact
-          name="Cisu Moeg"
-          phone-number="6949999999"
-          email-address="cisu@moeg.com"
-          is-favorite="100"
-        ></friend-contact>
-      </li>
+      <friend-contact
+        v-for="friend in friends"
+        :key="friend.id"
+        :name="friend.name"
+        :phone-number="friend.phone"
+        :email-address="friend.email"
+        :is-favorite="true"
+      ></friend-contact>
 
-      <li>
-        <friend-contact
-          name="John Doe"
-          phone-number="6979999999"
-          email-address="john@doe.com"
-        ></friend-contact>
-      </li>
+      <friend-contact
+        name="John Doe"
+        phone-number="6979999999"
+        email-address="john@doe.com"
+      ></friend-contact>
     </ul>
   </section>
 </template>
