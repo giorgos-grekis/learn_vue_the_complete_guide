@@ -1,3 +1,9 @@
+<script>
+export default {
+  props: ["fullName", "infoText", "role"],
+};
+</script>
+
 <template>
   <section>
     <div>
@@ -7,12 +13,6 @@
     <p>{{ infoText }}</p>
   </section>
 </template>
-
-<script>
-export default {
-  props: ['fullName', 'infoText', 'role'],
-};
-</script>
 
 <style>
 section {
