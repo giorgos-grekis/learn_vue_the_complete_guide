@@ -2,6 +2,10 @@
 export default {
   // props: ['name', 'phoneNumber', 'emailAddress', 'isFavorite'],
   props: {
+    id: {
+      type: String,
+      required: true
+    },
     name: {
       type: String,
       required: true
@@ -25,8 +29,7 @@ export default {
   },
   data() {
     return {
-      detailsAreVisible: true,
-      friendIsFavorite: this.isFavorite
+      detailsAreVisible: false
     }
   },
 
@@ -36,7 +39,8 @@ export default {
     },
 
     toogleFavorite() {
-      this.friendIsFavorite = !this.friendIsFavorite
+      // this.id provided as a first argument to a method that listens to this event "toggleFavoriteStatus in App.vue"
+      this.$emit('toggle-favorite', this.id)
     }
   }
 }
@@ -44,7 +48,7 @@ export default {
 
 <template>
   <li>
-    <h2>{{ name }} {{ friendIsFavorite ? '(Favorite)' : '' }}</h2>
+    <h2>{{ name }} {{ isFavorite ? '(Favorite)' : '' }}</h2>
     <button @click="toogleFavorite">toggle Favorite</button>
     <button @click="toogleDetails">{{ detailsAreVisible ? 'Hide' : 'Show' }} Details</button>
     <ul v-if="detailsAreVisible">

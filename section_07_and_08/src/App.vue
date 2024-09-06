@@ -7,9 +7,30 @@ export default {
   data() {
     return {
       friends: [
-        { id: 'cisu', name: 'Cisu Moeg', phone: '6949999999', email: 'cisu@moeg.com' },
-        { id: 'doe', name: 'John Doe', phone: '6979999999', email: 'john@mdoe.com' }
+        {
+          id: 'cisu',
+          name: 'Cisu Moeg',
+          phone: '6949999999',
+          email: 'cisu@moeg.com',
+          isFavorite: true
+        },
+        {
+          id: 'doe',
+          name: 'John Doe',
+          phone: '6979999999',
+          email: 'john@mdoe.com',
+          isFavorite: false
+        }
       ]
+    }
+  },
+
+  methods: {
+    // friendId accepted as a first paramenter
+    toggleFavoriteStatus(friendId) {
+      const identifiedFriend = this.friends.find((friend) => friend.id === friendId)
+
+      identifiedFriend.isFavorite = !identifiedFriend.isFavorite
     }
   }
 }
@@ -25,16 +46,12 @@ export default {
       <friend-contact
         v-for="friend in friends"
         :key="friend.id"
+        :id="friend.id"
         :name="friend.name"
         :phone-number="friend.phone"
         :email-address="friend.email"
-        :is-favorite="true"
-      ></friend-contact>
-
-      <friend-contact
-        name="John Doe"
-        phone-number="6979999999"
-        email-address="john@doe.com"
+        :is-favorite="friend.isFavorite"
+        @toggle-favorite="toggleFavoriteStatus"
       ></friend-contact>
     </ul>
   </section>
