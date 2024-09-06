@@ -17,11 +17,3 @@ export default {
     </base-card>
   </section>
 </template>
-
-<style scoped>
-section header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-</style>

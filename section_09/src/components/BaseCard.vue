@@ -20,7 +20,7 @@ div {
   padding: 1rem;
 }
 
-section header {
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
