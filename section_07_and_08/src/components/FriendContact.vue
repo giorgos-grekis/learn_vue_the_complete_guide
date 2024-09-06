@@ -28,7 +28,7 @@ export default {
     }
   },
 
-  emits: ['toggle-favorite'],
+  emits: ['toggle-favorite', 'delete'],
   // emits: {
   //   'toggle-favorite': function (id) {
   //     if (!id) {
@@ -54,6 +54,10 @@ export default {
       // this.id provided as a first argument to a method that listens to this event "toggleFavoriteStatus in App.vue"
       this.$emit('toggle-favorite', this.id)
     }
+
+    // deleteFriend() {
+    //   this.$emit('delete')
+    // }
   }
 }
 </script>
@@ -67,5 +71,12 @@ export default {
       <li><strong>Phone: </strong>{{ phoneNumber }}</li>
       <li><strong>Email: </strong>{{ emailAddress }}</li>
     </ul>
+
+    <!-- When binding to an event, you can either:
+      1. point at a method
+      2. execute a method
+      3. execute any other basic JS code. 
+    -->
+    <button @click="$emit('delete', this.id)">Delete</button>
   </li>
 </template>
