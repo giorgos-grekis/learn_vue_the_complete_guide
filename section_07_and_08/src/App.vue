@@ -7,7 +7,7 @@ export default {
   data() {
     return {
       friends: [
-        { id: 'cisu', name: 'Cisu Moeg', phone: '6949999999', email: 'cis2@moeg.com' },
+        { id: 'cisu', name: 'Cisu Moeg', phone: '6949999999', email: 'cisu@moeg.com' },
         { id: 'doe', name: 'John Doe', phone: '6979999999', email: 'john@mdoe.com' }
       ]
     }
@@ -31,7 +31,16 @@ export default {
         <friend-contact
           name="Cisu Moeg"
           phone-number="6949999999"
-          email-address="cis2@moeg.com"
+          email-address="cisu@moeg.com"
+          is-favorite="100"
+        ></friend-contact>
+      </li>
+
+      <li>
+        <friend-contact
+          name="John Doe"
+          phone-number="6979999999"
+          email-address="john@doe.com"
         ></friend-contact>
       </li>
     </ul>
