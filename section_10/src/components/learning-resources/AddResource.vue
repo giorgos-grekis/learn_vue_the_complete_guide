@@ -1,27 +1,49 @@
+<script>
+export default {
+  inject: ['addResource'],
+  methods: {
+    submit(e) {
+      e.preventDefault()
+
+      const enteredTitle = this.$refs.titleInput.value
+      const enteredDescription = this.$refs.descInput.value
+      const enteredUrl = this.$refs.linkInput.value
+
+      this.addResource({ title: enteredTitle, description: enteredDescription, url: enteredUrl })
+    }
+  }
+}
+</script>
+
 <template>
   <base-card>
+    <!-- @submit.prevent="submit" -->
     <form>
       <!-- title -->
+      <!-- v-model="form.title"  -->
       <div class="form-control">
         <label for="title">Title</label>
-        <input id="title" name="title" type="text" />
+        <input id="title" name="title" type="text" ref="titleInput" />
       </div>
 
       <!-- description -->
+      <!-- v-model="form.description" -->
       <div class="form-control">
         <label for="description">Description</label>
-        <textarea id="description" name="description" rows="3"></textarea>
+        <textarea id="description" name="description" rows="3" ref="descInput"></textarea>
       </div>
 
       <!-- link -->
+      <!-- v-model="form.link" -->
       <div class="form-control">
-        <label for="link">Description</label>
-        <textarea id="link" name="link" type="url"></textarea>
+        <label for="link">Link</label>
+        <input id="link" name="link" type="url" ref="linkInput" />
       </div>
 
       <!-- submit -->
       <div class="form-control">
-        <base-button type="submit">Add Resource </base-button>
+        <!-- <base-button @click="(e) => submit(e)" type="submit">Add Resource </base-button> -->
+        <base-button @click="submit($event)" type="submit">Add Resource </base-button>
       </div>
     </form>
   </base-card>
