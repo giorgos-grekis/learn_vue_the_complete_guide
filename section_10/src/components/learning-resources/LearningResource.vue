@@ -9,7 +9,9 @@ export default {
     <base-card>
       <header>
         <h3>{{ title }}</h3>
-        <button>Delete</button>
+        <base-button mode="flat">
+          <template #default>Delete</template>
+        </base-button>
       </header>
       <p>{{ description }}</p>
       <nav>
