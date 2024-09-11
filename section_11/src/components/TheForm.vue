@@ -1,5 +1,10 @@
 <script>
+import RatingControl from './RatingControl.vue'
 export default {
+  components: {
+    RatingControl
+  },
+
   data() {
     return {
       userName: '',
@@ -110,6 +115,10 @@ export default {
         <input id="how-other" name="how" type="radio" value="other" v-model="how" />
         <label for="how-other">Other</label>
       </div>
+    </div>
+
+    <div class="form-control">
+      <rating-control></rating-control>
     </div>
 
     <div class="form-control">
