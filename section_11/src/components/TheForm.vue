@@ -7,7 +7,8 @@ export default {
       referrer: 'wom',
       interest: [],
       how: null,
-      confirm: false
+      confirm: false,
+      userNameValidity: 'pending'
     }
   },
 
@@ -31,6 +32,13 @@ export default {
       this.interest = []
       this.how = null
       this.confirm = false
+    },
+    validateInput() {
+      if (this.userName.trim() === '') {
+        this.userNameValidity = 'invalid'
+      } else {
+        this.userNameValidity = 'valid'
+      }
     }
   }
 }
@@ -39,9 +47,10 @@ export default {
 <template>
   <form @submit.prevent="submitForm">
     <!-- Your Name -->
-    <div class="form-control">
+    <div class="form-control" :class="{ invalid: userNameValidity === 'invalid' }">
       <label for="user-name">Your Name</label>
-      <input id="user-name" name="user-name" type="text" v-model="userName" />
+      <input id="user-name" name="user-name" type="text" v-model="userName" @blur="validateInput" />
+      <p v-if="userNameValidity === 'invalid'">Please enter a valid name!</p>
     </div>
     <!-- Your Age (Years) -->
     <div class="form-control">
@@ -126,6 +135,14 @@ form {
 
 .form-control {
   margin: 0.5rem 0;
+}
+
+.form-control.invalid input {
+  border-color: red;
+}
+
+.form-control.invalid label {
+  color: red;
 }
 
 label {
